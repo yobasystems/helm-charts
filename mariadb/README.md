@@ -16,16 +16,10 @@ This Helm chart deploys MariaDB on Kubernetes, using the `ghcr.io/yobasystems/al
 
 ## Installing the Chart
 
-To install the chart with the release name `my-mariadb`:
+To install the chart with the release name `my-mariadb` (assuming you have added the `yobasystems` repository):
 
 ```bash
-helm install my-mariadb .
-```
-
-Or, if you have packaged the chart:
-
-```bash
-helm install my-mariadb mariadb-{{ .Chart.Version }}.tgz
+helm install my-mariadb yobasystems/mariadb
 ```
 
 ## Configuration
@@ -76,7 +70,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 For example:
 
 ```bash
-helm install my-mariadb . \
+helm install my-mariadb yobasystems/mariadb \
   --set mariadbConfiguration.rootPassword=mysecretpassword \
   --set persistence.data.size=20Gi
 ```
@@ -84,10 +78,10 @@ helm install my-mariadb . \
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example:
 
 ```bash
-helm install my-mariadb . -f myvalues.yaml
+helm install my-mariadb yobasystems/mariadb -f myvalues.yaml
 ```
 
-> **Tip**: You can use `helm show values .` to see all configurable options.
+> **Tip**: You can use `helm show values yobasystems/mariadb` to see all configurable options.
 
 ## Persistence
 

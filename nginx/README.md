@@ -16,16 +16,10 @@ This Helm chart deploys Nginx on Kubernetes, using an Nginx container image (e.g
 
 ## Installing the Chart
 
-To install the chart with the release name `my-nginx`:
+To install the chart with the release name `my-nginx` (assuming you have added the `yobasystems` repository):
 
 ```bash
-helm install my-nginx .
-```
-
-Or, if you have packaged the chart:
-
-```bash
-helm install my-nginx nginx-{{ .Chart.Version }}.tgz
+helm install my-nginx yobasystems/nginx
 ```
 
 ## Configuration
@@ -63,7 +57,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 For example:
 
 ```bash
-helm install my-nginx . \
+helm install my-nginx yobasystems/nginx \
   --set replicaCount=3 \
   --set service.type=LoadBalancer
 ```
@@ -71,10 +65,10 @@ helm install my-nginx . \
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example:
 
 ```bash
-helm install my-nginx . -f myvalues.yaml
+helm install my-nginx yobasystems/nginx -f myvalues.yaml
 ```
 
-> **Tip**: You can use `helm show values .` to see all configurable options.
+> **Tip**: You can use `helm show values yobasystems/nginx` to see all configurable options.
 
 ## Persistence
 
