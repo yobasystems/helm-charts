@@ -1,8 +1,56 @@
-
 version: 2
 updates:
   - package-ecosystem: docker
-    directory: "/"
+    directory: "/caddy/"
+    schedule:
+      interval: weekly
+    vulnerability-alerts:
+      enabled: true
+      confidential: true
+  - package-ecosystem: docker
+    directory: "/ghost/"
+    schedule:
+      interval: weekly
+    vulnerability-alerts:
+      enabled: true
+      confidential: true
+  - package-ecosystem: docker
+    directory: "/mariadb/"
+    schedule:
+      interval: weekly
+    vulnerability-alerts:
+      enabled: true
+      confidential: true
+  - package-ecosystem: docker
+    directory: "/nginx/"
+    schedule:
+      interval: weekly
+    vulnerability-alerts:
+      enabled: true
+      confidential: true
+  - package-ecosystem: docker
+    directory: "/postgresql/"
+    schedule:
+      interval: weekly
+    vulnerability-alerts:
+      enabled: true
+      confidential: true
+  - package-ecosystem: docker
+    directory: "/prestashop/"
+    schedule:
+      interval: weekly
+    vulnerability-alerts:
+      enabled: true
+      confidential: true
+  - package-ecosystem: docker
+    directory: "/redis/"
+    schedule:
+      interval: weekly
+    vulnerability-alerts:
+      enabled: true
+      confidential: true
+  - package-ecosystem: docker
+    directory: "/wordpress/"
     schedule:
       interval: weekly
     vulnerability-alerts:
