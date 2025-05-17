@@ -1,0 +1,33 @@
+PostgreSQL can be accessed via port {{ .Values.service.port }} on the following DNS name from within your cluster:
+{{ include "postgresql.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+
+To connect to your PostgreSQL server from outside the cluster:
+1. Get the PostgreSQL pod name:
+   export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "postgresql.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
+
+2. Forward the PostgreSQL port to your local machine:
+   echo "Forwarding PostgreSQL port {{ .Values.service.port }} to localhost:{{ .Values.service.port }}"
+   kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME {{ .Values.service.port }}:{{ .Values.service.port }}
+
+3. Connect using psql:
+   psql -h 127.0.0.1 -p {{ .Values.service.port }} -U {{ .Values.postgresqlConfiguration.user | default "postgres" }} -d {{ .Values.postgresqlConfiguration.database | default (.Values.postgresqlConfiguration.user | default "postgres") }}
+
+   Password: (use the password set in 'postgresqlConfiguration.password' or 'postgresqlConfiguration.postgresPassword')
+
+{{- if and .Values.ingress .Values.ingress.enabled (first .Values.ingress.hosts) }}
+   {{- $firstHost := first .Values.ingress.hosts -}}
+   {{- if $firstHost.host }}
+Your PostgreSQL instance may also be accessible via Ingress (if configured for TCP passthrough or similar, which is uncommon for direct DB access):
+     NOTE: This is not a typical way to access PostgreSQL directly.
+     {{- range .Values.ingress.hosts }}
+       {{- range .paths }}
+     Host: {{ .host }} Path: {{ .path }}
+       {{- end -}}
+     {{- end -}}
+   {{- end -}}
+{{- end }}
+
+Remember to use the appropriate user, password, and database name as configured in your values.yaml under `postgresqlConfiguration`.
+If `postgresqlConfiguration.user` was not set, the default superuser is 'postgres' and its password is `postgresqlConfiguration.postgresPassword`.
+If `postgresqlConfiguration.user` was set, that user was created, and its password is `postgresqlConfiguration.password`.
+The database name is `postgresqlConfiguration.database`. If not set, it defaults to the username (for 'postgres' user, db is 'postgres'; for other users, it's their username).
