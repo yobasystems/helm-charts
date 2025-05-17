@@ -18,7 +18,7 @@ This repository contains Helm charts for Yoba Systems.
 Add the helm chart repo & update
 
 ```bash
-helm repo add yobasystems https://yobasystems.github.io/helm-charts
+helm repo add yobasystems https://helm-charts.yoba.systems/
 helm repo update
 ```
 
