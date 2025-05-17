@@ -1,6 +1,6 @@
 # MariaDB Helm Chart
 
-This Helm chart deploys MariaDB on Kubernetes, using the `yobasystems/alpine-mariadb` Container image.
+This Helm chart deploys MariaDB on Kubernetes, using the `ghcr.io/yobasystems/alpine-mariadb` Container image.
 
 ## Chart Details
 
@@ -35,7 +35,7 @@ The following table lists the configurable parameters of the MariaDB chart and t
 | Parameter                       | Description                                     | Default                               |
 |---------------------------------|-------------------------------------------------|---------------------------------------|
 | `replicaCount`                  | Number of MariaDB replicas                      | `1`                                   |
-| `image.repository`              | MariaDB image repository                        | `yobasystems/alpine-mariadb`          |
+| `image.repository`              | MariaDB image repository                        | `ghcr.io/yobasystems/alpine-mariadb`    |
 | `image.pullPolicy`              | Image pull policy                               | `IfNotPresent`                        |
 | `image.tag`                     | MariaDB image tag (defaults to chart's appVersion) | `{{ .Chart.AppVersion }}`             |
 | `serviceAccount.create`         | Whether to create a service account             | `true`                                |
