@@ -16,16 +16,10 @@ This Helm chart deploys PostgreSQL on Kubernetes, using the `ghcr.io/yobasystems
 
 ## Installing the Chart
 
-To install the chart with the release name `my-postgresql`:
+To install the chart with the release name `my-postgresql` (assuming you have added the `yobasystems` repository):
 
 ```bash
-helm install my-postgresql .
-```
-
-Or, if you have packaged the chart:
-
-```bash
-helm install my-postgresql postgresql-{{ .Chart.Version }}.tgz
+helm install my-postgresql yobasystems/postgresql
 ```
 
 ## Configuration
@@ -74,7 +68,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 For example:
 
 ```bash
-helm install my-postgresql . \
+helm install my-postgresql yobasystems/postgresql \
   --set postgresqlConfiguration.rootPassword=mysecretpassword \
   --set persistence.data.size=20Gi
 ```
@@ -82,10 +76,10 @@ helm install my-postgresql . \
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example:
 
 ```bash
-helm install my-postgresql . -f myvalues.yaml
+helm install my-postgresql yobasystems/postgresql -f myvalues.yaml
 ```
 
-> **Tip**: You can use `helm show values .` to see all configurable options.
+> **Tip**: You can use `helm show values yobasystems/postgresql` to see all configurable options.
 
 ## Persistence
 
