@@ -1,6 +1,6 @@
 # Yoba Systems PostgreSQL Helm Chart
 
-This Helm chart deploys PostgreSQL on Kubernetes, using the `ghcr.io/yobasystems/alpine-postgresql` Container image.
+This Helm chart deploys PostgreSQL on Kubernetes, using the `ghcr.io/yobasystems/alpine-postgres` Container image.
 
 ## Chart Details
 
