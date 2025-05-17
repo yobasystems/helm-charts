@@ -1,0 +1,120 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nginx.fullname" . }}
+  labels:
+    {{- include "nginx.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "nginx.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "nginx.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "nginx.serviceAccountName" . }}
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          {{- with .Values.extraEnvVars }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          volumeMounts:
+            {{- if .Values.persistence.content.enabled }}
+            - name: nginx-content
+              mountPath: {{ .Values.persistence.content.mountPath }}
+            {{- end }}
+            {{- if .Values.persistence.logs.enabled }}
+            - name: nginx-logs
+              mountPath: {{ .Values.persistence.logs.mountPath }}
+            {{- end }}
+            {{- if and .Values.persistence.customConfig .Values.persistence.customConfig.enabled .Values.persistence.customConfig.existingConfigMap }}
+            - name: nginx-custom-config
+              mountPath: {{ .Values.persistence.customConfig.mountPath }}
+              readOnly: true
+            {{- end }}
+            {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+      {{- if or .Values.persistence.content.enabled .Values.persistence.logs.enabled (and .Values.persistence.customConfig .Values.persistence.customConfig.enabled .Values.persistence.customConfig.existingConfigMap) .Values.volumes }}
+      volumes:
+        {{- if .Values.persistence.content.enabled }}
+        - name: nginx-content
+          {{- if .Values.persistence.content.existingClaim }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.content.existingClaim }}
+          {{- else }}
+          persistentVolumeClaim:
+            claimName: {{ include "nginx.fullname" . }}-content
+          {{- end }}
+        {{- end }}
+        {{- if .Values.persistence.logs.enabled }}
+        - name: nginx-logs
+          {{- if .Values.persistence.logs.existingClaim }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.logs.existingClaim }}
+          {{- else }}
+          persistentVolumeClaim:
+            claimName: {{ include "nginx.fullname" . }}-logs
+          {{- end }}
+        {{- end }}
+        {{- if and .Values.persistence.customConfig .Values.persistence.customConfig.enabled .Values.persistence.customConfig.existingConfigMap }}
+        - name: nginx-custom-config
+          configMap:
+            name: {{ .Values.persistence.customConfig.existingConfigMap }}
+        {{- end }}
+        {{- if .Values.volumes }}
+        {{- toYaml .Values.volumes | nindent 8 }}
+        {{- end }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
