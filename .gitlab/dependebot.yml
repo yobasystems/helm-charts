@@ -1,0 +1,10 @@
+
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: weekly
+    vulnerability-alerts:
+      enabled: true
+      confidential: true
