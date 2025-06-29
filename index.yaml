@@ -13,24 +13,24 @@ entries:
     version: 11.4.5
   nginx:
   - apiVersion: v2
-    appVersion: 1.27.3
+    appVersion: 1.28.0
     created: "2025-05-17T23:14:43.039316+01:00"
     description: A Yoba Systems Helm chart for Nginx
     digest: 6087d4aa54f3590964e475a825c585c726d712346fbab81d041a3673d8340c3d
     name: nginx
     type: application
     urls:
-    - https://helm-charts.yoba.systems/nginx/charts/nginx-1.27.3.tgz
-    version: 1.27.3
+    - https://helm-charts.yoba.systems/nginx/charts/nginx-1.28.0.tgz
+    version: 1.28.0
   postgresql:
   - apiVersion: v2
-    appVersion: 16.6.0
+    appVersion: 16.9.0
     created: "2025-05-17T23:14:43.045862+01:00"
     description: A Yoba Systems Helm chart for PostgreSQL
     digest: d9c60e19877e87fa4880f1b79fdedc1552521035479fa7b0723f994ccb432f08
     name: postgresql
     type: application
     urls:
-    - https://helm-charts.yoba.systems/postgresql/charts/postgresql-16.6.0.tgz
-    version: 16.6.0
+    - https://helm-charts.yoba.systems/postgresql/charts/postgresql-16.9.0.tgz
+    version: 16.9.0
 generated: "2025-05-17T23:14:43.032535+01:00"
