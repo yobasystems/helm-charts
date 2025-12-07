@@ -1,6 +1,6 @@
 # MariaDB Helm Chart
 
-This Helm chart deploys MariaDB on Kubernetes, using the `ghcr.io/yobasystems/alpine-mariadb:11.4.9` Container image.
+This Helm chart deploys MariaDB on Kubernetes, using the `ghcr.io/yobasystems/alpine-mariadb:11.4.9` container image.
 
 ## Chart Details
 
