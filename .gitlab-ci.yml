@@ -1,8 +1,7 @@
-
 stages:
-- test
+  - test
 
 include:
-- template: Jobs/SAST.gitlab-ci.yml
-- template: Jobs/Secret-Detection.gitlab-ci.yml
-- component: gitlab.com/components/sast/iac-sast@main
+  - template: Jobs/SAST.gitlab-ci.yml
+  - template: Jobs/Secret-Detection.gitlab-ci.yml
+  - template: Jobs/SAST-IaC.gitlab-ci.yml
