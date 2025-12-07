@@ -1,12 +1,12 @@
 # Nginx Helm Chart
 
-This Helm chart deploys Nginx on Kubernetes, using an Nginx container image (e.g., `nginx:latest`).
+This Helm chart deploys Nginx on Kubernetes, using the `ghcr.io/yobasystems/alpine-nginx:1.29.3` container image.
 
 ## Chart Details
 
 - **Chart Name:** nginx
-- **Chart Version:** {{ .Chart.Version }}
-- **Application Version:** {{ .Chart.AppVersion }}
+- **Chart Version:** 1.29.3
+- **Application Version:** 1.29.3
 
 ## Prerequisites
 
@@ -29,9 +29,9 @@ The configurable parameters for the Nginx chart and their default values are lis
 | Parameter                       | Description                                     | Default                               |
 |---------------------------------|-------------------------------------------------|---------------------------------------|
 | `replicaCount`                  | Number of Nginx replicas                         | `1`                                   |
-| `image.repository`              | Nginx image repository                          | `nginx`                               |
+| `image.repository`              | Nginx image repository                          | `ghcr.io/yobasystems/alpine-nginx`                               |
 | `image.pullPolicy`              | Image pull policy                               | `IfNotPresent`                        |
-| `image.tag`                     | Nginx image tag (defaults to chart's appVersion) | `{{ .Chart.AppVersion }}`             |
+| `image.tag`                     | Nginx image tag (defaults to chart's appVersion) | `1.29.3`             |
 | `serviceAccount.create`         | Whether to create a service account             | `true`                                |
 | `serviceAccount.name`           | Name of the service account to use              | `""` (generated)                    |
 | `podSecurityContext`            | Pod security context                            | `{}`                                  |

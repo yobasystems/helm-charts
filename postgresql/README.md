@@ -1,12 +1,12 @@
 # Yoba Systems PostgreSQL Helm Chart
 
-This Helm chart deploys PostgreSQL on Kubernetes, using the `ghcr.io/yobasystems/alpine-postgres` Container image.
+This Helm chart deploys PostgreSQL on Kubernetes, using the `ghcr.io/yobasystems/alpine-postgresql:18.1.0` container image.
 
 ## Chart Details
 
 - **Chart Name:** postgresql
-- **Chart Version:** {{ .Chart.Version }}
-- **Application Version:** {{ .Chart.AppVersion }}
+- **Chart Version:** 18.1.0
+- **Application Version:** 18.1.0
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ The following table lists the configurable parameters of the PostgreSQL chart an
 |--------------------------------------------|-------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
 | `replicaCount`                             | Number of PostgreSQL replicas                                                                                  | `1`                                                         |
 | `image.repository`                         | PostgreSQL image repository                                                                                    | `ghcr.io/yobasystems/alpine-postgresql`                         |
-| `image.tag`                                | PostgreSQL image tag (immutable tags are recommended)                                                        | `{{ .Chart.AppVersion }}`                                   |
+| `image.tag`                                | PostgreSQL image tag (immutable tags are recommended)                                                        | `18.1.0`                                   |
 | `image.pullPolicy`                         | PostgreSQL image pull policy                                                                                 | `IfNotPresent`                                              |
 | `serviceAccount.create`                    | Specifies whether a service account should be created                                                       | `true`                                                      |
 | `serviceAccount.name`                      | The name of the service account to use. If not set and create is true, a name is generated using the fullname template | `""`                                                        |
