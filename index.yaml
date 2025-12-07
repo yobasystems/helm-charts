@@ -2,35 +2,75 @@ apiVersion: v1
 entries:
   mariadb:
   - apiVersion: v2
-    appVersion: 11.4.5
-    created: "2025-05-17T23:14:43.037238+01:00"
+    appVersion: 11.4.9
+    created: "2025-12-07T13:50:15.969994Z"
     description: A Yoba Systems Helm chart for MariaDB
-    digest: 609471137ffddf12727c5a3be002f7a510a298f1b33816285b29a793c3161616
+    digest: d69338ed47ebd39432df61b07c4a2672526d27532aab891622ab791a9835a42d
     name: mariadb
     type: application
     urls:
-    - https://helm-charts.yoba.systems/mariadb/charts/mariadb-11.4.5.tgz
-    version: 11.4.5
+    - https://helm-charts.yoba.systems/mariadb-11.4.9.tgz
+    version: 11.4.9
   nginx:
   - apiVersion: v2
+    appVersion: 1.29.3
+    created: "2025-12-07T13:50:15.971192Z"
+    description: A Yoba Systems Helm chart for Nginx
+    digest: a7731263bf03cedae4c450ceb7e1833a377060289b2f18c0920ce8a68a61e6bf
+    name: nginx
+    type: application
+    urls:
+    - https://helm-charts.yoba.systems/nginx-1.29.3.tgz
+    version: 1.29.3
+  - apiVersion: v2
     appVersion: 1.28.0
-    created: "2025-05-17T23:14:43.039316+01:00"
+    created: "2025-12-07T13:50:15.970757Z"
+    description: A Yoba Systems Helm chart for Nginx
+    digest: f8fce18f4e8a6ed7fa0cfef18abc3ccf59a1540a76cd1664f9eb0b2e0165245d
+    name: nginx
+    type: application
+    urls:
+    - https://helm-charts.yoba.systems/nginx-1.28.0.tgz
+    version: 1.28.0
+  - apiVersion: v2
+    appVersion: 1.27.3
+    created: "2025-12-07T13:50:15.970297Z"
     description: A Yoba Systems Helm chart for Nginx
     digest: 6087d4aa54f3590964e475a825c585c726d712346fbab81d041a3673d8340c3d
     name: nginx
     type: application
     urls:
-    - https://helm-charts.yoba.systems/nginx/charts/nginx-1.28.0.tgz
-    version: 1.28.0
+    - https://helm-charts.yoba.systems/nginx-1.27.3.tgz
+    version: 1.27.3
   postgresql:
   - apiVersion: v2
-    appVersion: 16.9.0
-    created: "2025-05-17T23:14:43.045862+01:00"
-    description: A Yoba Systems Helm chart for PostgreSQL
-    digest: d9c60e19877e87fa4880f1b79fdedc1552521035479fa7b0723f994ccb432f08
+    appVersion: 18.1.0
+    created: "2025-12-07T13:50:15.975184Z"
+    description: A Yoba Systems Helm chart for postgresql
+    digest: 5ecd9e552d40dfce890559ac7ce071b34bba9ce811f1f5b4323bdfb9170d5fed
     name: postgresql
     type: application
     urls:
-    - https://helm-charts.yoba.systems/postgresql/charts/postgresql-16.9.0.tgz
-    version: 16.9.0
-generated: "2025-05-17T23:14:43.032535+01:00"
+    - https://helm-charts.yoba.systems/postgresql-18.1.0.tgz
+    version: 18.1.0
+  - apiVersion: v2
+    appVersion: 17.7.0
+    created: "2025-12-07T13:50:15.973321Z"
+    description: A Yoba Systems Helm chart for postgresql
+    digest: 9eff51b85f8160f3b6fe796715723f7d8a356007e144e6ebd8f54995fbe1cbba
+    name: postgresql
+    type: application
+    urls:
+    - https://helm-charts.yoba.systems/postgresql-17.7.0.tgz
+    version: 17.7.0
+  - apiVersion: v2
+    appVersion: 16.11.0
+    created: "2025-12-07T13:50:15.971822Z"
+    description: A Yoba Systems Helm chart for postgresql
+    digest: 511501bdbfccc6db474c568597381bb6bc9fdece546ff74cdb62ef5feba84b6d
+    name: postgresql
+    type: application
+    urls:
+    - https://helm-charts.yoba.systems/postgresql-16.11.0.tgz
+    version: 16.11.0
+generated: "2025-12-07T13:50:15.96939Z"

@@ -27,6 +27,23 @@ Install a chart
 helm install my-mariadb yobasystems/mariadb
 ```
 
+## Development
+### Updating the repo package
+
+```bash
+helm package mariadb
+helm package nginx
+helm package postgresql
+```
+
+
+### Updating the repo index
+
+```bash
+helm repo index . --url https://helm-charts.yoba.systems
+```
+
+
 ## More info
 
 - [mariadb](mariadb/README.md)

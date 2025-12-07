@@ -4,7 +4,7 @@ This Helm chart deploys PostgreSQL on Kubernetes, using the `ghcr.io/yobasystems
 
 ## Chart Details
 
-- **Chart Name:** postgresql
+- **Chart Name:** postgres
 - **Chart Version:** {{ .Chart.Version }}
 - **Application Version:** {{ .Chart.AppVersion }}
 
@@ -16,10 +16,10 @@ This Helm chart deploys PostgreSQL on Kubernetes, using the `ghcr.io/yobasystems
 
 ## Installing the Chart
 
-To install the chart with the release name `my-postgresql` (assuming you have added the `yobasystems` repository):
+To install the chart with the release name `my-postgres` (assuming you have added the `yobasystems` repository):
 
 ```bash
-helm install my-postgresql yobasystems/postgresql
+helm install my-postgres yobasystems/postgresql
 ```
 
 ## Configuration
